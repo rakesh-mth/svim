@@ -42,9 +42,14 @@ filetype plugin on
 syntax on
 let mapleader = "\<Space>" " map leader key to Space
 
-
 " set viminfo for startify to work with vim
 if !has('nvim') && has('win32') | set viminfo+=n~/_viminfo | endif
 
 " configure options (string, number, list)
 let &cdpath=g:UC_WORKSPACE_FOLDER . ',,' " cdpath to easily change directory using lcd (lcd foldername-in-cdpath)
+
+" remove default config path on windows from rtp list, not needed now after setup callback in cheovim
+" if has('win32')
+"     set runtimepath-=~\AppData\Local\nvim
+" endif
+

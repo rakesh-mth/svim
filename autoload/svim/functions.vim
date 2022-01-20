@@ -108,3 +108,21 @@ function! svim#functions#AltMapping()
     endif
 endfunction
 
+" load plugin
+function svim#functions#LoadPlug()
+    " source gloabls.vim and vim-plug.vim. vim-plug.vim is used for installing vim-plug.
+    exec 'source ' . g:UC_PLUGGED_DIR . '/vim-user-config/core/globals.vim'
+    exec 'source ' . g:UC_PLUGGED_DIR . '/vim-user-config/core/vim-plug.vim'
+    " pre configure plugins
+    exec 'source ' . g:UC_PLUGGED_DIR . '/vim-user-config/config/airline-config.vim'
+    exec 'source ' . g:UC_PLUGGED_DIR . '/vim-user-config/config/tags-config.vim'
+    exec 'source ' . g:UC_PLUGGED_DIR . '/vim-user-config/config/indent-config.vim'
+    exec 'source ' . g:UC_PLUGGED_DIR . '/vim-user-config/config/nerdtree-config.vim'
+    exec 'source ' . g:UC_PLUGGED_DIR . '/vim-user-config/config/ultisnip-config.vim'
+    exec 'source ' . g:UC_PLUGGED_DIR . '/vim-user-config/config/cpp-config.vim'
+    " enable plugins
+    exec 'source ' . g:UC_PLUGGED_DIR . '/vim-user-config/core/plugins.vim'
+    " post configure plugins
+    exec 'source ' . g:UC_PLUGGED_DIR . '/vim-user-config/core/config.vim'
+endfunction
+
