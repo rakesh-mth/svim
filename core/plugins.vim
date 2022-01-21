@@ -6,7 +6,6 @@ endfunction
 " Plugins : add all plugins here
 
 call plug#begin(g:UC_PLUGGED_DIR)
-
     " plugins that adds custom operator, following from - https://thoughtbot.com/upcase/videos/extending-the-vim-language
     Plug 'tpope/vim-surround' " adds cs{ change scope }, ds{ delete scope } and ys{ add scope } 
     Plug 'tpope/vim-commentary' " adds gc{motion}, gcc (comment a line)   
@@ -89,6 +88,4 @@ call plug#begin(g:UC_PLUGGED_DIR)
     " Plug 'ludovicchabant/vim-gutentags' " auto generate tags - no external dependncies other than ctags. will use this instead of auto-ctags
     " Plug 'mhartington/nvim-typescript', {'do': './install.sh'} " typescript support, commented out because of error on quiting vim / neovim
 
-    " must be last plugin
-    Plug 'rakesh-mth/vim-user-config' 
 call plug#end()
