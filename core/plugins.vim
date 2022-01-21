@@ -20,6 +20,8 @@ call plug#begin(g:UC_PLUGGED_DIR)
     Plug 'kana/vim-textobj-line' " al, il
     " color scheme
     Plug 'morhetz/gruvbox' " grovebox color scheme
+    Plug 'luisiacc/gruvbox-baby' " grovebox color scheme
+    Plug 'LunarVim/onedarker.nvim' " onedarker color scheme with TS support
     Plug 'arcticicestudio/nord-vim' " nord color scheme
     Plug 'trevordmiller/nova-vim' " nova color schema
     Plug 'JulioJu/neovim-qt-colors-solarized-truecolor-only', Cond(has('nvim')) " solarized color scheme for neovim

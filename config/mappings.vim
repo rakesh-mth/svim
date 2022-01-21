@@ -14,7 +14,7 @@
 " productivity
     nnoremap <leader>] ]]zz
     nnoremap <leader>[ [[zz
-    nnoremap <leader>lu mqO<Esc>`q| " add a line above 
+    nnoremap <leader>lu mqO<Esc>`q| " add a line above
     nnoremap <leader>ld mqo<Esc>`q| " add a line below
     nnoremap <leader>cc <Esc>6i#<Esc>A| " add 6 # and place cursor at the end (comment begin)
     nnoremap <leader>vs :exe ':silent !code %'<CR>:redraw!<CR>
