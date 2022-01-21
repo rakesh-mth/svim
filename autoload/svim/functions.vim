@@ -111,15 +111,10 @@ endfunction
 " load plugin
 function svim#functions#LoadPlug()
     " pre configure plugins
-    exec 'source ' . g:UC_VIM_CONFIG_FOLDER_FULL_PATH . '/config/airline-config.vim'
-    exec 'source ' . g:UC_VIM_CONFIG_FOLDER_FULL_PATH . '/config/tags-config.vim'
-    exec 'source ' . g:UC_VIM_CONFIG_FOLDER_FULL_PATH . '/config/indent-config.vim'
-    exec 'source ' . g:UC_VIM_CONFIG_FOLDER_FULL_PATH . '/config/nerdtree-config.vim'
-    exec 'source ' . g:UC_VIM_CONFIG_FOLDER_FULL_PATH . '/config/ultisnip-config.vim'
-    exec 'source ' . g:UC_VIM_CONFIG_FOLDER_FULL_PATH . '/config/cpp-config.vim'
+    exec 'source ' . g:UC_VIM_CONFIG_FOLDER_FULL_PATH . '/core/config-plugins.vim'
     " enable plugins
     exec 'source ' . g:UC_VIM_CONFIG_FOLDER_FULL_PATH . '/core/plugins.vim'
     " post configure plugins
-    exec 'source ' . g:UC_VIM_CONFIG_FOLDER_FULL_PATH . '/core/config.vim'
+    exec 'source ' . g:UC_VIM_CONFIG_FOLDER_FULL_PATH . '/core/config-svim.vim'
 endfunction
 
