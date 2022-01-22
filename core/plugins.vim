@@ -56,13 +56,25 @@ call plug#begin(g:UC_PLUGGED_DIR)
     Plug 'Xuyuanp/nerdtree-git-plugin'
     if has('nvim-0.5')
         Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " treesitter for better text color
-        Plug 'nvim-lua/plenary.nvim'  " dependencies for luss-ls
+        Plug 'nvim-lua/plenary.nvim'  " dependencies for null-ls
+        " completion plugins
+        Plug 'hrsh7th/cmp-nvim-lsp'
+        Plug 'hrsh7th/cmp-buffer'
+        Plug 'hrsh7th/cmp-path'
+        Plug 'hrsh7th/cmp-cmdline'
+        Plug 'saadparwaiz1/cmp_luasnip' " snippet completions
+        Plug 'hrsh7th/nvim-cmp'
+        " snippets plugins
+        Plug 'L3MON4D3/LuaSnip' " snippet engine
+        Plug 'rafamadriz/friendly-snippets' " a bunch of snippets to use
+        " completion plugin not used currently
+        Plug 'ms-jpq/coq_nvim', {'branch': 'coq'} " run :COQdeps (only once) and then :COQnow
+        Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+        " lsp plugins
         Plug 'neovim/nvim-lspconfig'  " nvim lsp configure
         Plug 'williamboman/nvim-lsp-installer' " nvim lsp install and configure using nvim-lspconfig
         Plug 'tamago324/nlsp-settings.nvim' " to configure Neovim LSP using json files
         Plug 'jose-elias-alvarez/null-ls.nvim', {'commit': '288c4582f62f04944412acaed098fc16a1818464'} " null-ls language server for formatter and linter (in addition to lsp)
-        Plug 'ms-jpq/coq_nvim', {'branch': 'coq'} " run :COQdeps (only once) and then :COQnow
-        Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
     else
         Plug 'sheerun/vim-polyglot' " used by nova color schema, multiple programming language support (basic). tree-sitter is replacing this plugin.
         Plug 'HerringtonDarkholme/yats.vim' " Add a syntax file for typescript. YATS is the best. tree-sitter is replacing this plugin.

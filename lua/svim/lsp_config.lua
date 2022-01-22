@@ -1,25 +1,9 @@
-local status_ok, lspconfig = pcall(require, "lspconfig")
-if not status_ok then
+local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
+local lsp_installer_status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
+if not lspconfig_status_ok then
 	return
 end
 
-local lsp_installer
-status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
-if not status_ok then
-	return
-end
-
-local nlspsettings
-status_ok, nlspsettings = pcall(require, "nlspsettings")
-if not status_ok then
-	return
-end
-
-local null_ls
-status_ok, null_ls = pcall(require, "null-ls")
-if not status_ok then
-	return
-end
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -69,52 +53,68 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
--- [rakesh] commented because nvim-lsp-installer will be used below
--- local servers = { "golangci_lint_ls", "gopls", "pylsp", "clangd", "rust_analyzer", "tsserver" }
--- for _, lsp in ipairs(servers) do
--- 	lspconfig[lsp].setup({
--- 		on_attach = on_attach,
--- 		flags = {
--- 			debounce_text_changes = 150,
--- 		},
--- 	})
--- end
+-- [rakesh] will be used only when nvim-lsp-installer is not installed
+if not lsp_installer_status_ok then
+    local servers = { "golangci_lint_ls", "gopls", "pylsp", "clangd", "rust_analyzer", "tsserver" }
+    for _, lsp in ipairs(servers) do
+        lspconfig[lsp].setup({
+            on_attach = on_attach,
+            flags = {
+                debounce_text_changes = 150,
+            },
+        })
+    end
+end
 
 -- using nvim-lsp-installer
 -- Register a handler that will be called for all installed servers.
 -- Alternatively, you may also register handlers on specific server instances instead (see example below).
-lsp_installer.on_server_ready(function(server)
-	local opts = {
-		-- map buffer local keybindings when the language server attaches
-		on_attach = on_attach,
-	}
-	-- (optional) Customize the options passed to the server
-	-- if server.name == "tsserver" then
-	--     opts.root_dir = function() ... end
-	-- end
+if lsp_installer_status_ok then
+    lsp_installer.on_server_ready(function(server)
+        local cmp_nvim_lsp_status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+        local capabilities = vim.lsp.protocol.make_client_capabilities()
+        if cmp_nvim_lsp_status_ok then
+            capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+        end
+        local opts = {
+            -- map buffer local keybindings when the language server attaches
+            on_attach = on_attach,
+            capabilities = capabilities,
+        }
+        -- (optional) Customize the options passed to the server
+        -- if server.name == "tsserver" then
+        --     opts.root_dir = function() ... end
+        -- end
 
-	-- This setup() function is exactly the same as lspconfig's setup function.
-	-- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-	server:setup(opts)
-end)
+        -- This setup() function is exactly the same as lspconfig's setup function.
+        -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+        server:setup(opts)
+    end)
+end
 
 -- config for nlsp-settings.nvim
-nlspsettings.setup({
-	config_home = vim.fn.stdpath("config") .. "/nlsp-settings",
-	local_settings_root_markers = { ".git" },
-	jsonls_append_default_schemas = true,
-})
+local nlspsettings_status_ok, nlspsettings = pcall(require, "nlspsettings")
+if nlspsettings_status_ok then
+    nlspsettings.setup({
+        config_home = vim.fn.stdpath("config") .. "/nlsp-settings",
+        local_settings_root_markers = { ".git" },
+        jsonls_append_default_schemas = true,
+    })
+end
 
 -- config for null-ls.nvim
-null_ls.setup({
-	sources = {
-		-- lua formatter and linter
-		null_ls.builtins.formatting.stylua,
-		null_ls.builtins.diagnostics.luacheck,
-		-- python formatter and linter
-		null_ls.builtins.formatting.black,
-		null_ls.builtins.diagnostics.flake8,
-		-- spell completion
-		null_ls.builtins.completion.spell,
-	},
-})
+local null_ls_status_ok, null_ls = pcall(require, "null-ls")
+if null_ls_status_ok then
+    null_ls.setup({
+        sources = {
+            -- lua formatter and linter
+            null_ls.builtins.formatting.stylua,
+            null_ls.builtins.diagnostics.luacheck,
+            -- python formatter and linter
+            null_ls.builtins.formatting.black,
+            null_ls.builtins.diagnostics.flake8,
+            -- spell completion
+            null_ls.builtins.completion.spell,
+        },
+    })
+end

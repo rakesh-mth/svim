@@ -1,7 +1,7 @@
 " all mappings goes here
 
 " toggle gui elements in VIM (no impact in nvim-qt)
-    nnoremap <F11> <Esc>:call svim#functions#ToggleGUICruft()<cr>
+    nnoremap <F11> :call svim#functions#ToggleGUICruft()<cr>
 
 " spell checker
     map <leader>sp :setlocal spell! spelllang=en_us<cr>
