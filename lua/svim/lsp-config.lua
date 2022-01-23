@@ -43,8 +43,10 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap("n", "<space>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 	buf_set_keymap("n", "<space>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
     -- [svim]
-	buf_set_keymap("n", "<leader>lo", "<cmd>ClangdSwitchSourceHeader<CR>", opts)
-	buf_set_keymap("n", "<A-o>", "<cmd>ClangdSwitchSourceHeader<CR>", opts)
+    if client.name == "clangd" then
+        buf_set_keymap("n", "<leader>lo", "<cmd>ClangdSwitchSourceHeader<CR>", opts)
+        buf_set_keymap("n", "<A-o>", "<cmd>ClangdSwitchSourceHeader<CR>", opts)
+    end
 end
 
 -- using lspconfig
