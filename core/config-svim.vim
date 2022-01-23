@@ -16,7 +16,7 @@ endif
 if has('nvim-0.5') && exists("g:lspconfig")
     exec 'luafile ' . g:UC_VIM_CONFIG_FOLDER_FULL_PATH . '/lua/svim/nvim-tree.lua'
     exec 'luafile ' . g:UC_VIM_CONFIG_FOLDER_FULL_PATH . '/lua/svim/cmp.lua'
-    exec 'luafile ' . g:UC_VIM_CONFIG_FOLDER_FULL_PATH . '/lua/svim/lsp_config.lua'
+    exec 'luafile ' . g:UC_VIM_CONFIG_FOLDER_FULL_PATH . '/lua/svim/lsp-config.lua'
     exec 'luafile ' . g:UC_VIM_CONFIG_FOLDER_FULL_PATH . '/lua/svim/treesitter.lua'
     exec 'luafile ' . g:UC_VIM_CONFIG_FOLDER_FULL_PATH . '/lua/svim/hop.lua'
 endif
