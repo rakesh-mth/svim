@@ -26,6 +26,7 @@ set scrolloff=5         " Determines the number of context lines you would like 
 set clipboard=unnamedplus   " use system clipboard ('+') for copy, paste and delete. all goes to '+' register.
 set cedit=\<C-Y>            " use C-y to go to command mode window (q:) from command mode
 set encoding=UTF-8          " for vim. No need to set explicitly under Neovim: always uses UTF-8 as the default encoding.
+set timeoutlen=500          " By default timeoutlen is 1000 ms. to increase response time of <leader>f
 " set cursorcolumn          " enable cursor column drawing
 if has('win32unix')
     set termguicolors   " enable true color
