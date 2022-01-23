@@ -52,6 +52,7 @@ call plug#begin(g:UC_PLUGGED_DIR)
     Plug 'godlygeek/tabular' " Tabular for aligning texts in tabular format
     Plug 'phaazon/hop.nvim', Cond(has('nvim')) " easy motion like plugin
     if has('nvim-0.5')
+        Plug 'kyazdani42/nvim-web-devicons' " for file icons in nvim-tree. needed by nvim-tree.
         Plug 'kyazdani42/nvim-tree.lua' " A File Explorer For Neovim Written In Lua
         Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " treesitter for better text color
         Plug 'nvim-lua/plenary.nvim'  " dependencies for null-ls
@@ -74,6 +75,9 @@ call plug#begin(g:UC_PLUGGED_DIR)
         Plug 'tamago324/nlsp-settings.nvim' " to configure Neovim LSP using json files
         Plug 'jose-elias-alvarez/null-ls.nvim', {'commit': '288c4582f62f04944412acaed098fc16a1818464'} " null-ls language server for formatter and linter (in addition to lsp)
     else
+        Plug 'ryanoasis/vim-devicons' " for file icons in nerdtree. needed by nerdtree.
+        Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " NERD tree will be loaded on the first invocation of NERDTreeToggle command
+        Plug 'Xuyuanp/nerdtree-git-plugin'
         Plug 'sheerun/vim-polyglot' " used by nova color schema, multiple programming language support (basic). tree-sitter is replacing this plugin.
         Plug 'HerringtonDarkholme/yats.vim' " Add a syntax file for typescript. YATS is the best. tree-sitter is replacing this plugin.
         Plug 'octol/vim-cpp-enhanced-highlight' " tree-sitter is replacing this plugin.
@@ -82,9 +86,6 @@ call plug#begin(g:UC_PLUGGED_DIR)
         if !has('win32unix') " vim not in msys
             Plug 'SirVer/ultisnips' " Track the engine. for snippets.
         endif
-        " NERD tree will be loaded on the first invocation of NERDTreeToggle command
-        Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-        Plug 'Xuyuanp/nerdtree-git-plugin'
     endif
     Plug 'honza/vim-snippets' " Snippets are separated from the engine. Add this if you want them:
     " Code to execute when the plugin is lazily loaded on demand
