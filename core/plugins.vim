@@ -57,12 +57,14 @@ call plug#begin(g:UC_PLUGGED_DIR)
         Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " treesitter for better text color
         Plug 'nvim-lua/plenary.nvim'  " dependencies for null-ls
         " completion plugins
-        Plug 'hrsh7th/cmp-nvim-lsp'
+        Plug 'hrsh7th/cmp-nvim-lsp' " add nvim_lsp source in nvim-cmp. completion using lsp.
+        Plug 'hrsh7th/cmp-nvim-lua' " add nvim_lua source in nvim-cmp.
+        Plug 'folke/lua-dev.nvim'   " complete using lsp. for developing lua plugin.
         Plug 'hrsh7th/cmp-buffer'
         Plug 'hrsh7th/cmp-path'
         Plug 'hrsh7th/cmp-cmdline'
         Plug 'saadparwaiz1/cmp_luasnip' " snippet completions
-        Plug 'hrsh7th/nvim-cmp'
+        Plug 'hrsh7th/nvim-cmp'         " main comletion engine
         " snippets plugins
         Plug 'L3MON4D3/LuaSnip' " snippet engine
         Plug 'rafamadriz/friendly-snippets' " a bunch of snippets to use
@@ -76,12 +78,11 @@ call plug#begin(g:UC_PLUGGED_DIR)
         Plug 'jose-elias-alvarez/null-ls.nvim', {'commit': '288c4582f62f04944412acaed098fc16a1818464'} " null-ls language server for formatter and linter (in addition to lsp)
     else
         Plug 'ryanoasis/vim-devicons' " for file icons in nerdtree. needed by nerdtree.
-        Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " NERD tree will be loaded on the first invocation of NERDTreeToggle command
+        Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " loaded on the first invocation of NERDTreeToggle command
         Plug 'Xuyuanp/nerdtree-git-plugin'
         Plug 'sheerun/vim-polyglot' " used by nova color schema, multiple programming language support (basic). tree-sitter is replacing this plugin.
         Plug 'HerringtonDarkholme/yats.vim' " Add a syntax file for typescript. YATS is the best. tree-sitter is replacing this plugin.
         Plug 'octol/vim-cpp-enhanced-highlight' " tree-sitter is replacing this plugin.
-        " Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' } " code completion
         Plug 'neoclide/coc.nvim', {'branch': 'release'} " Intellisense engine for vim8 & neovim, full language server protocol support as VSCode. complete with YouCompleteMe
         if !has('win32unix') " vim not in msys
             Plug 'SirVer/ultisnips' " Track the engine. for snippets.
@@ -100,6 +101,8 @@ call plug#begin(g:UC_PLUGGED_DIR)
     Plug 'rhysd/vim-healthcheck', Cond(!has('nvim')) " CheckHealth in vim
 
 
+    " un-used plugins, replaced by other plugins
+    " Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' } " code completion
     " Plug 'szw/vim-tags' " auto generate tags using ctags, command TagsGenerate. disable because this plugin will change `:cd` during GFile or other fzf commands.
     " Plug 'ludovicchabant/vim-gutentags' " auto generate tags - no external dependncies other than ctags. will use this instead of auto-ctags
     " Plug 'mhartington/nvim-typescript', {'do': './install.sh'} " typescript support, commented out because of error on quiting vim / neovim

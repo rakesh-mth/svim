@@ -82,9 +82,14 @@ if lsp_installer_status_ok then
             capabilities = capabilities,
         }
         -- (optional) Customize the options passed to the server
-        -- if server.name == "tsserver" then
-        --     opts.root_dir = function() ... end
-        -- end
+        if server.name == "sumneko_lua" then
+            local lua_dev_loaded, lua_dev = pcall(require, "lua-dev")
+            if lua_dev_loaded then
+                local luadev = require("lua-dev").setup({ lspconfig = opts })
+                server:setup(luadev)
+                return
+            end
+        end
 
         -- This setup() function is exactly the same as lspconfig's setup function.
         -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md

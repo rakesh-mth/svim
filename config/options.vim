@@ -25,6 +25,7 @@ set colorcolumn=120     " Indent line at what column? Set something like '99999'
 set scrolloff=5         " Determines the number of context lines you would like to see above and below the cursor
 set clipboard=unnamedplus   " use system clipboard ('+') for copy, paste and delete. all goes to '+' register.
 set cedit=\<C-Y>            " use C-y to go to command mode window (q:) from command mode
+set encoding=UTF-8          " for vim. No need to set explicitly under Neovim: always uses UTF-8 as the default encoding.
 " set cursorcolumn          " enable cursor column drawing
 if has('win32unix')
     set termguicolors   " enable true color
