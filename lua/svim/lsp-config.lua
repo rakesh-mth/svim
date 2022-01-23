@@ -58,7 +58,9 @@ end
 -- map buffer local keybindings when the language server attaches
 -- [rakesh] will be used only when nvim-lsp-installer is not installed
 if not lsp_installer_status_ok then
-    local servers = { "golangci_lint_ls", "gopls", "pylsp", "clangd", "rust_analyzer", "tsserver" }
+    local servers = { "sumneko_lua", "vimls", "jsonls", "yamlls", "cmake",
+        "golangci_lint_ls", "gopls", "pylsp", "clangd", "rust_analyzer", "tsserver"
+    }
     for _, lsp in ipairs(servers) do
         lspconfig[lsp].setup({
             on_attach = on_attach,
