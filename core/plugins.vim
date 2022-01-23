@@ -51,10 +51,8 @@ call plug#begin(g:UC_PLUGGED_DIR)
     Plug 'tpope/vim-eunuch' " Vim sugar for the UNIX shell commands that need it the most. Mkdir!
     Plug 'godlygeek/tabular' " Tabular for aligning texts in tabular format
     Plug 'phaazon/hop.nvim', Cond(has('nvim')) " easy motion like plugin
-    " NERD tree will be loaded on the first invocation of NERDTreeToggle command
-    Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-    Plug 'Xuyuanp/nerdtree-git-plugin'
     if has('nvim-0.5')
+        Plug 'kyazdani42/nvim-tree.lua' " A File Explorer For Neovim Written In Lua
         Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " treesitter for better text color
         Plug 'nvim-lua/plenary.nvim'  " dependencies for null-ls
         " completion plugins
@@ -84,6 +82,9 @@ call plug#begin(g:UC_PLUGGED_DIR)
         if !has('win32unix') " vim not in msys
             Plug 'SirVer/ultisnips' " Track the engine. for snippets.
         endif
+        " NERD tree will be loaded on the first invocation of NERDTreeToggle command
+        Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+        Plug 'Xuyuanp/nerdtree-git-plugin'
     endif
     Plug 'honza/vim-snippets' " Snippets are separated from the engine. Add this if you want them:
     " Code to execute when the plugin is lazily loaded on demand

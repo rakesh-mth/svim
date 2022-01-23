@@ -117,9 +117,15 @@
     nnoremap <silent> <leader>pu :PlugUpdate<CR>  | " update plugins
 
 " for plugin nerd tree : enable line numbers, make sure relative line numbers are used
-    nnoremap <silent> <leader>e :NERDTreeToggle<CR> | " mapping similar to LunarVim
-    nnoremap <silent> <leader>pt :NERDTreeToggle<Enter> :normal zz<CR> :wincmd p<CR>
-    nnoremap <silent> <leader>ptf :NERDTreeFind<CR> :normal zz<CR> :wincmd p<CR>
+    if has('nvim-0.5')
+        nnoremap <silent> <leader>e :NvimTreeToggle<CR> | " mapping similar to LunarVim
+        nnoremap <silent> <leader>pt :NvimTreeToggle<Enter> :normal zz<CR> :wincmd p<CR>
+        nnoremap <silent> <leader>ptf :NvimTreeFindFile<CR> :normal zz<CR> :wincmd p<CR>
+    else
+        nnoremap <silent> <leader>e :NERDTreeToggle<CR> | " mapping similar to LunarVim
+        nnoremap <silent> <leader>pt :NERDTreeToggle<Enter> :normal zz<CR> :wincmd p<CR>
+        nnoremap <silent> <leader>ptf :NERDTreeFind<CR> :normal zz<CR> :wincmd p<CR>
+    endif
 
 " for plugin startify
     nnoremap <silent> <leader>; :Startify<CR> | " to match with LunarVim dashboard
