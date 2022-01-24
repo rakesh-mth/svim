@@ -27,6 +27,7 @@ set clipboard=unnamedplus   " use system clipboard ('+') for copy, paste and del
 set cedit=\<C-Y>            " use C-y to go to command mode window (q:) from command mode
 set encoding=UTF-8          " for vim. No need to set explicitly under Neovim: always uses UTF-8 as the default encoding.
 set timeoutlen=500          " By default timeoutlen is 1000 ms. to increase response time of <leader>f
+set updatetime=300          " default is 4000. The length of time Vim waits after you stop typing before it triggers the plugin.
 " set cursorcolumn          " enable cursor column drawing
 if has('win32unix')
     set termguicolors   " enable true color
