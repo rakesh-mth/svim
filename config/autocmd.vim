@@ -43,7 +43,7 @@ augroup END
 
 augroup plugin_indentline
     autocmd!
-    autocmd BufEnter * IndentLinesEnable | LeadingSpaceEnable
+    autocmd BufEnter * if exists('g:indentLine_loaded') && g:indentLine_loaded == 1 | IndentLinesEnable | LeadingSpaceEnable | endif
 augroup END
 
 augroup plugin_fugitive

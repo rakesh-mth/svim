@@ -3,9 +3,12 @@ function! Cond(cond, ...)
   return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
 endfunction
 
+let s:svimPath = expand('<sfile>:p:h:h')
+let s:pluggedDir = s:svimPath . '/plugged'
+
 " Plugins : add all plugins here
 
-call plug#begin(g:UC_PLUGGED_DIR)
+call plug#begin(s:pluggedDir)
     " plugins that adds custom operator, following from - https://thoughtbot.com/upcase/videos/extending-the-vim-language
     Plug 'tpope/vim-surround' " adds cs{ change scope }, ds{ delete scope } and ys{ add scope } 
     Plug 'tpope/vim-commentary' " adds gc{motion}, gcc (comment a line)   

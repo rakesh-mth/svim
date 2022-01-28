@@ -1,31 +1,50 @@
 " this file can be used as .vimrc or init.vim on windows, linux and mac
 " works with neovim-qt, gvim (windows), fvim (windows), vimr (mac), macvim (mac)
  
-" echo "sourcing global.vim"
-" source gloabls.vim to bring global variables
-exec 'source ' . expand('<sfile>:p:h:h') . '/core/globals.vim'
-" echo "done global.vim"
-" echo g:UC_VIM_CONFIG_FOLDER_FULL_PATH
-" echo g:UC_PLUGGED_DIR
+" script variables
+    let s:svimPath   = expand('<sfile>:p:h:h')
+    let s:plugPath   = s:svimPath . '/autoload/plug.vim'
+    let s:pluggedDir = s:svimPath . '/plugged'
+
+" global variables
+    " user home dir
+    if has('win32') | let g:UC_HOME_DIR = $USERPROFILE | else | let g:UC_HOME_DIR = $HOME | endif
+    let g:UC_HOME_DIR = substitute(g:UC_HOME_DIR, "\\", "\/", "g")
+    " workspace folder
+    let g:UC_WORKSPACE_DIR = has('win32') ? 'f:\DevTrees' : $HOME . '/workspaces'
+    " vim folder full path
+    let g:UC_VIM_CONFIG_FOLDER_FULL_PATH = expand('<sfile>:p:h:h')
+    " plugged folder
+    let g:UC_PLUGGED_DIR = g:UC_VIM_CONFIG_FOLDER_FULL_PATH . '/plugged' " Specify a directory for plugins 
+
+" function to load svim
+    function s:LoadPlug()
+        " pre configure plugins
+        exec 'source ' . s:svimPath . '/core/config-plugins.vim'
+        " enable plugins
+        exec 'source ' . s:svimPath . '/core/plugins.vim'
+    endfunction
 
 " install plug.vim (bootstrap plugin)
-    let plugPath = g:UC_VIM_CONFIG_FOLDER_FULL_PATH . '/autoload/plug.vim'
-    if empty(glob(plugPath))
-        silent execute '!curl -fLo ' . plugPath . ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    if empty(glob(s:plugPath))
+        silent execute '!curl -fLo ' . s:plugPath . ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     endif
 
-" add path of rakesh-mth to rtp 
-    let &rtp = &rtp . ',' . g:UC_VIM_CONFIG_FOLDER_FULL_PATH
-
-
-" echo "sourcing plugins.vim"
-    " exec 'source ' . g:UC_VIM_CONFIG_FOLDER_FULL_PATH . '/core/plugins.vim'
+" add path of svim to rtp 
+    let &rtp = &rtp . ',' . s:svimPath
 
 " auto install all plugin if vim-user-config is missing (bootstrap vim-user-config). 
-    if !isdirectory(g:UC_PLUGGED_DIR)
-        autocmd VimEnter * PlugInstall --sync | call svim#functions#LoadPlug()  | PlugInstall | source $MYVIMRC
+    if !isdirectory(s:pluggedDir)
+        set background=dark
+        augroup svim_bootstrap
+            autocmd VimEnter * call s:LoadPlug()  | PlugInstall --sync | call s:LoadPlug() | close | Startify | call svim#onstart#SetColorscheme() | helptags ALL
+        augroup END
     else
-        call svim#functions#LoadPlug()
+        call s:LoadPlug()
     endif
+
+" post configure plugins, run it during VimEnter so that all plugins are loaded.
+    augroup config_svim
+        autocmd! VimEnter * exec 'source ' . s:svimPath . '/core/config-svim.vim'
+    augroup END 
 

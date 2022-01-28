@@ -90,9 +90,20 @@ if lsp_installer_status_ok then
         }
         -- (optional) Customize the options passed to the server
         if server.name == "sumneko_lua" then
+            opts["settings"] = {
+                Lua = {
+                  diagnostics = {
+                    globals = { "vim", "use" },
+                  },
+                  workspace = {
+                    maxPreload = 100000,
+                    preloadFileSize = 10000,
+                  },
+                },
+            }
             local lua_dev_loaded, lua_dev = pcall(require, "lua-dev")
             if lua_dev_loaded then
-                local luadev = require("lua-dev").setup({ lspconfig = opts })
+                local luadev = lua_dev.setup({ lspconfig = opts })
                 server:setup(luadev)
                 return
             end

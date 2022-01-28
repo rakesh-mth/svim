@@ -108,13 +108,3 @@ function! svim#functions#AltMapping()
     endif
 endfunction
 
-" load plugin
-function svim#functions#LoadPlug()
-    " pre configure plugins
-    exec 'source ' . g:UC_VIM_CONFIG_FOLDER_FULL_PATH . '/core/config-plugins.vim'
-    " enable plugins
-    exec 'source ' . g:UC_VIM_CONFIG_FOLDER_FULL_PATH . '/core/plugins.vim'
-    " post configure plugins
-    exec 'source ' . g:UC_VIM_CONFIG_FOLDER_FULL_PATH . '/core/config-svim.vim'
-endfunction
-

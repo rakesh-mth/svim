@@ -61,7 +61,8 @@
     nnoremap <leader>qp :cprev<cr>
 
 " spacemacs key bindings
-    nnoremap <leader><TAB> :call svim#functions#BufferToggle()<cr>| " Toggle between presious and current buffer.
+    " nnoremap <leader><TAB> :call svim#functions#BufferToggle()<cr>| " Toggle between presious and current buffer.
+    nnoremap <leader><TAB> :b #<cr>| " Toggle between presious and current buffer.
     nnoremap <leader><leader> :| " switch to command mode
     nnoremap <leader>fed :e $MYVIMRC<cr>| " open vim configuration file (.vimrc or init.vim)
     nnoremap <leader>gb  :GBranches<cr>| " open  page (from fugitive)
@@ -185,7 +186,7 @@
     let g:fzfSwitchProjectProjectDepth = 2 " one level deep for finding projects
     nnoremap <leader>pp :FzfSwitchProject<CR>| " select project using <Space>pp, similar to spacemacs and doom-emacs
     nnoremap <leader>p  :FzfSwitchProject<CR>| " efficient version (similar to f, b, t, w, l)
-    let g:fzfSwitchProjectWorkspaces=[g:UC_WORKSPACE_FOLDER] " workspaces
+    let g:fzfSwitchProjectWorkspaces=[g:UC_WORKSPACE_DIR] " workspaces
     let g:fzfSwitchProjectProjects=[ g:UC_PLUGGED_DIR . '/vim-user-config', g:UC_HOME_DIR . '/.config/emacs/spacemacs/.emacs.d', g:UC_HOME_DIR . '/.config/emacs/doom-emacs/.emacs.d' ] " individual projects
     if has('nvim')
         call add(g:fzfSwitchProjectProjects, stdpath("config"))
