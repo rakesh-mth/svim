@@ -77,12 +77,13 @@ end
 -- Register a handler that will be called for all installed servers.
 -- Alternatively, you may also register handlers on specific server instances instead (see example below).
 if lsp_installer_status_ok then
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
+    local cmp_nvim_lsp_status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+    if cmp_nvim_lsp_status_ok then
+        capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+    end
     lsp_installer.on_server_ready(function(server)
-        local cmp_nvim_lsp_status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-        local capabilities = vim.lsp.protocol.make_client_capabilities()
-        if cmp_nvim_lsp_status_ok then
-            capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
-        end
         local opts = {
             -- map buffer local keybindings when the language server attaches
             on_attach = on_attach,
@@ -119,7 +120,7 @@ end
 local nlspsettings_status_ok, nlspsettings = pcall(require, "nlspsettings")
 if nlspsettings_status_ok then
     nlspsettings.setup({
-        config_home = vim.fn.stdpath("config") .. "/nlsp-settings",
+        config_home = vim.fn.stdpath("data") .. "/nlsp-settings",
         local_settings_root_markers = { ".git" },
         jsonls_append_default_schemas = true,
     })
