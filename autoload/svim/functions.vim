@@ -95,4 +95,19 @@ function! svim#functions#ToggleRelativeNumber() abort " can also use: nornu and 
 endfunction
 
 
+function! svim#functions#AgCommand(word, options)
+    if !executable('ag')
+        return s:warn('ag is not found, please install the_silver_searcher')
+    endif
+    let cmd = "ag --nogroup --column --vimgrep " . a:options . " " . a:word
+    cexpr system(cmd)
+endfunction
+
+function! svim#functions#RgCommand(word, options)
+    if !executable('rg')
+        return s:warn('rg is not found, please install ripgrep')
+    endif
+    let cmd = "rg --column --line-number --vimgrep " . a:options . " " . a:word
+    cexpr system(cmd)
+endfunction
 

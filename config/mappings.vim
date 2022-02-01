@@ -67,7 +67,8 @@
     nnoremap <leader>fed :e $MYVIMRC<cr>| " open vim configuration file (.vimrc or init.vim)
     nnoremap <leader>gb  :GBranches<cr>| " open  page (from fugitive)
     nnoremap <leader>gt  :GTags<cr>| " open  page (from fugitive)
-    nnoremap <leader>gg  :Git \| wincmd _ \| normal gu<cr>| " open git status page (from fugitive), and jump to Unstaged
+    nnoremap <leader>gg  :FloatermNew lazygit<cr>| " floaterm with lazygit
+    nnoremap <leader>gs  :Git \| wincmd _ \| normal gu<cr>| " open git status page (from fugitive), and jump to Unstaged
     nnoremap <leader>gp  :Git push<cr> " push to remote branch
     nnoremap <leader>gc  :Commits<cr>| " open commit list in current branch
     nnoremap <leader>gd  :tabe \| Git diff \| wincmd o<cr>| " open git diff in new tab
@@ -223,27 +224,15 @@
 " update args with git listed files
     nnoremap <leader>a :args `git ls-files`<cr> 2<C-o>
 
-" search TODO, FIXME or any text and put them in cwindow
-    function! AgCommand(word, options)
-        if !executable('ag')
-            return s:warn('ag is not found, please install the_silver_searcher')
-        endif
-        cexpr system("ag --nogroup --column --vimgrep " . a:options . " " . a:word)
-    endfunction
-    function! RgCommand(word, options)
-        if !executable('rg')
-            return s:warn('rg is not found, please install ripgrep')
-        endif
-        cexpr system("rg --column --line-number --vimgrep " . a:options . " " . a:word)
-    endfunction
+" search, TODO, FIXME. on any text and put them in cwindow
     nnoremap <leader>stc  :silent vimgrep /TODO\\|FIXME/j % \| :cw<CR>
     nnoremap <leader>sta  :silent vimgrep /TODO\\|FIXME/j `git ls-files` \| :cw<CR>
     nnoremap <leader>sav  :execute 'silent vim! <cword> `git ls-files` \| copen \| cc'<cr>
-    nnoremap <leader>saai :call AgCommand(expand("<cword>"), "--ignore-case")<cr>
-    nnoremap <leader>saas :call AgCommand(expand("<cword>"), "--case-sensitive")<cr>
-    nnoremap <leader>sari :call RgCommand(expand("<cword>"), "--ignore-case")<cr>
-    nnoremap <leader>sars :call RgCommand(expand("<cword>"), "--case-sensitive")<cr>
-    nnoremap <leader>sa   :call RgCommand(expand("<cword>"), "--case-sensitive")<cr>
+    nnoremap <leader>saai :call svim#functions#AgCommand(expand("<cword>"), "--ignore-case")<cr>
+    nnoremap <leader>saas :call svim#functions#AgCommand(expand("<cword>"), "--case-sensitive")<cr>
+    nnoremap <leader>sari :call svim#functions#RgCommand(expand("<cword>"), "--ignore-case")<cr>
+    nnoremap <leader>sars :call svim#functions#RgCommand(expand("<cword>"), "--case-sensitive")<cr>
+    nnoremap <leader>sa   :call svim#functions#RgCommand(expand("<cword>"), "--case-sensitive")<cr>
     " nnoremap <leader>sa   :execute 'normal <leader>sars'<cr>
     nnoremap <leader>*    :Rg <C-R><C-W><CR>
     nnoremap <leader>#    :Ag <C-R><C-W><CR>
@@ -255,11 +244,11 @@
 
 " search and replace 
     nnoremap <leader>rc  :%s/\<<C-r>=expand("<cword>")<CR>\>/
-    nnoremap <leader>raai :call AgCommand(expand("<cword>"), "-i")<cr> :cfdo! %s/\<<C-r>=expand("<cword>")<CR>\>//gc\|w<left><left><left><left><left>
-    nnoremap <leader>raas :call AgCommand(expand("<cword>"), "-s")<cr> :cfdo! %s/\<<C-r>=expand("<cword>")<CR>\>//gc\|w<left><left><left><left><left>
-    nnoremap <leader>rari :call RgCommand(expand("<cword>"), "-i")<cr> :cfdo! %s/\<<C-r>=expand("<cword>")<CR>\>//gc\|w<left><left><left><left><left>
-    nnoremap <leader>rars :call RgCommand(expand("<cword>"), "-s")<cr> :cfdo! %s/\<<C-r>=expand("<cword>")<CR>\>//gc\|w<left><left><left><left><left>
-    nnoremap <leader>ra   :call RgCommand(expand("<cword>"), "-s")<cr> :cfdo! %s/\<<C-r>=expand("<cword>")<CR>\>//gc\|w<left><left><left><left><left>
+    nnoremap <leader>raai :call svim#functions#AgCommand(expand("<cword>"), "-i")<cr> :cfdo! %s/\<<C-r>=expand("<cword>")<CR>\>//gc\|w<left><left><left><left><left>
+    nnoremap <leader>raas :call svim#functions#AgCommand(expand("<cword>"), "-s")<cr> :cfdo! %s/\<<C-r>=expand("<cword>")<CR>\>//gc\|w<left><left><left><left><left>
+    nnoremap <leader>rari :call svim#functions#RgCommand(expand("<cword>"), "-i")<cr> :cfdo! %s/\<<C-r>=expand("<cword>")<CR>\>//gc\|w<left><left><left><left><left>
+    nnoremap <leader>rars :call svim#functions#RgCommand(expand("<cword>"), "-s")<cr> :cfdo! %s/\<<C-r>=expand("<cword>")<CR>\>//gc\|w<left><left><left><left><left>
+    nnoremap <leader>ra   :call svim#functions#RgCommand(expand("<cword>"), "-s")<cr> :cfdo! %s/\<<C-r>=expand("<cword>")<CR>\>//gc\|w<left><left><left><left><left>
     " nnoremap <leader>ra   :execute 'normal <leader>rars'<cr>
     nnoremap <leader>rav :Vim <cword><cr> :cfdo %s/\<<C-r>=expand("<cword>")<CR>\>//gc\|w<left><left><left><left><left>
     nnoremap <leader>rad :argdo! %s/\<<C-r>=expand("<cword>")<CR>\>//gc\|w<left><left><left><left><left>
