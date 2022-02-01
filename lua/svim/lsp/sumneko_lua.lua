@@ -31,7 +31,7 @@ function M.setup(opts)
         }
         opts = lua_dev.setup(dev_opts)
         -- opts = vim.tbl_deep_extend("force", lua_dev.setup(dev_opts), opts)
-        require("svim.utils").print_table(opts.settings.Lua)
+        -- require("svim.utils").print_table(opts.settings.Lua)
     end
     return opts
 end

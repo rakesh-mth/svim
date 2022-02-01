@@ -8,3 +8,5 @@ exec 'source ' . s:svimPath . '/config/indent-config.vim'
 exec 'source ' . s:svimPath . '/config/nerdtree-config.vim'
 exec 'source ' . s:svimPath . '/config/ultisnip-config.vim'
 exec 'source ' . s:svimPath . '/config/cpp-config.vim'
+exec 'source ' . s:svimPath . '/config/fzfproject-config.vim'
+
