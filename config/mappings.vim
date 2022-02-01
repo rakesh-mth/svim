@@ -319,6 +319,8 @@
         nmap <leader><leader><leader>" <leader>asbt
     endif
 
+" alt mapping
+    call svim#onstart#AltMapping()
 
 " build rfwin projects
     nnoremap <leader>mrg :Dispatch ctxmake gfxrender<CR>

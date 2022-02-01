@@ -4,7 +4,6 @@ if not lspconfig_status_ok then
 	return
 end
 
-
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
@@ -91,23 +90,7 @@ if lsp_installer_status_ok then
         }
         -- (optional) Customize the options passed to the server
         if server.name == "sumneko_lua" then
-            opts["settings"] = {
-                Lua = {
-                  diagnostics = {
-                    globals = { "vim", "use" },
-                  },
-                  workspace = {
-                    maxPreload = 100000,
-                    preloadFileSize = 10000,
-                  },
-                },
-            }
-            local lua_dev_loaded, lua_dev = pcall(require, "lua-dev")
-            if lua_dev_loaded then
-                local luadev = lua_dev.setup({ lspconfig = opts })
-                server:setup(luadev)
-                return
-            end
+            opts = require("svim.lsp.sumneko_lua").setup(opts)
         end
 
         -- This setup() function is exactly the same as lspconfig's setup function.
