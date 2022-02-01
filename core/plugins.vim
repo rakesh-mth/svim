@@ -86,6 +86,7 @@ call plug#begin(s:pluggedDir)
         Plug 'williamboman/nvim-lsp-installer' " nvim lsp install and configure using nvim-lspconfig
         Plug 'tamago324/nlsp-settings.nvim' " to configure Neovim LSP using json files
         Plug 'jose-elias-alvarez/null-ls.nvim', {'commit': '288c4582f62f04944412acaed098fc16a1818464'} " null-ls language server for formatter and linter (in addition to lsp)
+        Plug 'b0o/schemastore.nvim' " providing access to the SchemaStore catalog for jsonls
         " fuzzy finder - lua based
         Plug 'ibhagwan/fzf-lua'
     else

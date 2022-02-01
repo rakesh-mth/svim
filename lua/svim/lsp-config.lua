@@ -89,8 +89,9 @@ if lsp_installer_status_ok then
             capabilities = capabilities,
         }
         -- (optional) Customize the options passed to the server
-        if server.name == "sumneko_lua" then
-            opts = require("svim.lsp.sumneko_lua").setup(opts)
+        if server.name == "sumneko_lua" or server.name == "jsonls" then
+            -- print(server.name .. " - configuring...")
+            opts = require("svim.lsp." .. server.name).setup(opts)
         end
 
         -- This setup() function is exactly the same as lspconfig's setup function.
