@@ -20,14 +20,15 @@ function M.setup(opts)
     local lua_dev_loaded, lua_dev = pcall(require, "lua-dev")
     if lua_dev_loaded then
         local dev_opts = {
-          library = {
-            vimruntime = true, -- runtime path
-            types = true, -- full signature, docs and completion of vim.api, vim.treesitter, vim.lsp and others
-            plugins = true, -- installed opt or start plugins in packpath
-            -- you can also specify the list of plugins to make available as a workspace library
-            -- plugins = { "plenary.nvim" },
-          },
-          lspconfig = opts,
+            library = {
+                vimruntime = true, -- runtime path
+                types = true, -- full signature, docs and completion of vim.api, vim.treesitter, vim.lsp and others
+                plugins = true, -- installed opt or start plugins in packpath
+                -- you can also specify the list of plugins to make available as a workspace library
+                -- plugins = { "nvim-treesitter", "plenary.nvim", "telescope.nvim" },
+            },
+            runtime_path = true,
+            lspconfig = opts,
         }
         opts = lua_dev.setup(dev_opts)
         -- opts = vim.tbl_deep_extend("force", lua_dev.setup(dev_opts), opts)
