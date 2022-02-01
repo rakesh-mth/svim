@@ -4,13 +4,12 @@ exec 'source ' . s:svimPath . '/config/options.vim'
 exec 'source ' . s:svimPath . '/config/mappings.vim'
 exec 'source ' . s:svimPath . '/config/autocmd.vim'
 exec 'source ' . s:svimPath . '/config/python.vim'
-exec 'source ' . s:svimPath . '/config/startify.vim'
 exec 'source ' . s:svimPath . '/config/path.vim'
 exec 'source ' . s:svimPath . '/config/log.vim'
 " source coc.nvim configs. coc.nvim is used with neovim < 0.5.
 if !has('win32unix') && !has('nvim-0.5')
-    exec 'source ' . s:svimPath . '/config/coc/coc.vim'
-    exec 'source ' . s:svimPath . '/config/coc/coc-extensions.vim'
+    exec 'source ' . s:svimPath . '/config/plugins-config/coc/coc.vim'
+    exec 'source ' . s:svimPath . '/config/plugins-config/coc/coc-extensions.vim'
 endif
 
 " source lua files
