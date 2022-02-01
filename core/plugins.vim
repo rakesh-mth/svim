@@ -54,7 +54,9 @@ call plug#begin(s:pluggedDir)
     Plug 'tpope/vim-eunuch' " Vim sugar for the UNIX shell commands that need it the most. Mkdir!
     Plug 'godlygeek/tabular' " Tabular for aligning texts in tabular format
     Plug 'phaazon/hop.nvim', Cond(has('nvim')) " easy motion like plugin
-    Plug 'justinmk/vim-sneak' " easy motion, use s or S in normal mode. s is same as cl and S is same as cc.
+    Plug 'justinmk/vim-sneak' " easy motion in full file, use s or S in normal mode. s = cl and S = cc.
+    Plug 'unblevable/quick-scope' " easy motion in a line
+    Plug 'voldikss/vim-floaterm' " terminal with apps
     if has('nvim-0.5')
         Plug 'nvim-lua/plenary.nvim'  " dependencies for null-ls
         Plug 'kyazdani42/nvim-web-devicons' " for file icons in nvim-tree. needed by nvim-tree.
