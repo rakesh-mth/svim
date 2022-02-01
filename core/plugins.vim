@@ -54,6 +54,7 @@ call plug#begin(s:pluggedDir)
     Plug 'tpope/vim-eunuch' " Vim sugar for the UNIX shell commands that need it the most. Mkdir!
     Plug 'godlygeek/tabular' " Tabular for aligning texts in tabular format
     Plug 'phaazon/hop.nvim', Cond(has('nvim')) " easy motion like plugin
+    Plug 'justinmk/vim-sneak' " easy motion, use s or S in normal mode. s is same as cl and S is same as cc.
     if has('nvim-0.5')
         Plug 'nvim-lua/plenary.nvim'  " dependencies for null-ls
         Plug 'kyazdani42/nvim-web-devicons' " for file icons in nvim-tree. needed by nvim-tree.
@@ -83,6 +84,8 @@ call plug#begin(s:pluggedDir)
         Plug 'williamboman/nvim-lsp-installer' " nvim lsp install and configure using nvim-lspconfig
         Plug 'tamago324/nlsp-settings.nvim' " to configure Neovim LSP using json files
         Plug 'jose-elias-alvarez/null-ls.nvim', {'commit': '288c4582f62f04944412acaed098fc16a1818464'} " null-ls language server for formatter and linter (in addition to lsp)
+        " fuzzy finder - lua based
+        Plug 'ibhagwan/fzf-lua'
     else
         Plug 'ryanoasis/vim-devicons' " for file icons in nerdtree. needed by nerdtree.
         Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " loaded on the first invocation of NERDTreeToggle command
