@@ -67,10 +67,13 @@ local lazygit = Terminal:new({
         border = "double",
     },
 })
-
 function _lazygit_toggle()
     lazygit:toggle()
 end
-
+-- git status using lazygit
 vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
+
+-- git push command and keymap
+vim.cmd [[ command! -count=1 TermGitPush  lua require'toggleterm'.exec("git push", <count>, 12) ]]
+vim.api.nvim_set_keymap("n", "<leader>gp", "<cmd>TermGitPush<CR>", {noremap = true, silent = true})
 
