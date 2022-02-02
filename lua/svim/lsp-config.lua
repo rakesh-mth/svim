@@ -48,6 +48,16 @@ local on_attach = function(client, bufnr)
     end
 end
 
+local get_lsp_capabilities = function()
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
+    local cmp_nvim_lsp_status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+    if cmp_nvim_lsp_status_ok then
+        capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+    end
+    return capabilities
+end
+
 -- using lspconfig
 -- enable lsp servers. commented because of below for loop.
 -- lspconfig.golangci_lint_ls.setup{}
@@ -76,17 +86,11 @@ end
 -- Register a handler that will be called for all installed servers.
 -- Alternatively, you may also register handlers on specific server instances instead (see example below).
 if lsp_installer_status_ok then
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities.textDocument.completion.completionItem.snippetSupport = true
-    local cmp_nvim_lsp_status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-    if cmp_nvim_lsp_status_ok then
-        capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
-    end
     lsp_installer.on_server_ready(function(server)
         local opts = {
             -- map buffer local keybindings when the language server attaches
             on_attach = on_attach,
-            capabilities = capabilities,
+            capabilities = get_lsp_capabilities(),
         }
         -- (optional) Customize the options passed to the server
         if server.name == "sumneko_lua" or server.name == "jsonls" then
