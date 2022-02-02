@@ -187,6 +187,11 @@
     nnoremap <leader>pp :FzfSwitchProject<CR>| " select project using <Space>pp, similar to spacemacs and doom-emacs
     nnoremap <leader>p  :FzfSwitchProject<CR>| " efficient version (similar to f, b, t, w, l)
 
+" floaterm mappings
+    if exists(':FloatermNew')
+        nnoremap <leader>ab :FloatermNew btm<CR>| " open system monitoring
+    endif
+
 " lsp mappings
     nnoremap <leader>lI :LspInstallInfo<CR>
     nnoremap <leader>li :LspInfo<CR>

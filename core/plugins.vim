@@ -89,6 +89,8 @@ call plug#begin(s:pluggedDir)
         Plug 'b0o/schemastore.nvim' " providing access to the SchemaStore catalog for jsonls
         " fuzzy finder - lua based
         Plug 'ibhagwan/fzf-lua'
+        " floating terminal
+        Plug 'akinsho/toggleterm.nvim'
     else
         Plug 'ryanoasis/vim-devicons' " for file icons in nerdtree. needed by nerdtree.
         Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " loaded on the first invocation of NERDTreeToggle command

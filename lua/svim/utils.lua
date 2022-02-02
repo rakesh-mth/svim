@@ -10,6 +10,14 @@ local join_paths = function(...)
   return result
 end
 
+local get_shell = function()
+    if is_windows then
+        return '\"C:\\Program Files\\Git\\bin\\bash.exe\"'
+    else
+        return vim.o.shell
+    end
+end
+
 local print_table = function(tbl)
     local luarocks_path = ';'
     if is_windows then
@@ -49,6 +57,7 @@ local get_package_path = function()
 end
 
 M.join_paths = join_paths
+M.get_shell = get_shell
 M.print_table = print_table
 M.get_runtime_lua_path = get_runtime_lua_path 
 M.get_package_path = get_package_path

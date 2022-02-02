@@ -18,6 +18,7 @@ if has('nvim-0.5') && exists("g:lspconfig")
     exec 'luafile ' . s:svimPath . '/lua/svim/cmp.lua'
     exec 'luafile ' . s:svimPath . '/lua/svim/lsp-config.lua'
     exec 'luafile ' . s:svimPath . '/lua/svim/treesitter.lua'
+    exec 'luafile ' . s:svimPath . '/lua/svim/toggleterm.lua'
     exec 'luafile ' . s:svimPath . '/lua/svim/hop.lua'
 endif
 
