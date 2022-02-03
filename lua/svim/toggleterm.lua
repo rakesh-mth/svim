@@ -61,6 +61,7 @@ toggleterm.setup{
 local Terminal  = require('toggleterm.terminal').Terminal
 local lazygit = Terminal:new({
     cmd = "lazygit",
+    dir = "git_dir",
     hidden = true,
     direction = "float",
     float_opts = {
@@ -72,6 +73,21 @@ function _lazygit_toggle()
 end
 -- git status using lazygit
 vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
+
+
+local btm = Terminal:new({
+    cmd = "btm",
+    hidden = true,
+    direction = "float",
+    float_opts = {
+        border = "double",
+    },
+})
+function _btm_toggle()
+    btm:toggle()
+end
+-- system monitoring status using btm
+vim.api.nvim_set_keymap("n", "<leader>ab", "<cmd>lua _btm_toggle()<CR>", {noremap = true, silent = true})
 
 -- git push command and keymap
 vim.cmd [[ command! -count=1 TermGitPush  lua require'toggleterm'.exec("git push", <count>, 12) ]]

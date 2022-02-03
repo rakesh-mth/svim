@@ -1,5 +1,6 @@
 " set commands : set default configs
 
+set hidden
 set showmatch           " Show matching brackets.
 set number              " Show the line numbers on the left side.
 set expandtab           " Insert spaces when TAB is pressed.
