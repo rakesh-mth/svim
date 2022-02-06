@@ -47,11 +47,15 @@ call plug#begin(s:pluggedDir)
     Plug 'soramugi/auto-ctags.vim' " auto generate tags using ctags, commands Ctags
     Plug 'airblade/vim-gitgutter' " git plugin to show changed lines 
     Plug 'arp242/auto_mkdir2.vim' " auto create directory during file save if directory does not exist
-    Plug 'tpope/vim-dispatch' " background jobs. commands: :Make
     Plug 'jiangmiao/auto-pairs' " inserts quotes and parenthesis in pairs as you type
     Plug 'tpope/vim-unimpaired' " commonly used ex commands, ]q [q ]Q [Q etc...
     Plug 'tpope/vim-sensible' " some defaults agreed
     Plug 'tpope/vim-eunuch' " Vim sugar for the UNIX shell commands that need it the most. Mkdir!
+    Plug 'tpope/vim-speeddating' " increment decrement dates
+    Plug 'tpope/vim-repeat' " repeat with dot (.) on non native command, from plugins
+    Plug 'tpope/vim-dispatch' " background jobs. commands: :Make
+    Plug 'glts/vim-magnum'  " big integer library for vim
+    Plug 'glts/vim-radical' " crd, crx, cro, crb - convert the number under the cursor to decimal, hex, octal, binary
     Plug 'godlygeek/tabular' " Tabular for aligning texts in tabular format
     Plug 'phaazon/hop.nvim', Cond(has('nvim')) " easy motion like plugin
     Plug 'justinmk/vim-sneak' " easy motion in full file, use s or S in normal mode. s = cl and S = cc.
