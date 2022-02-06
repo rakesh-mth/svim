@@ -2,6 +2,7 @@
 
 let s:svimPath = expand('<sfile>:p:h:h')
 
+exec 'source ' . s:svimPath . '/config/plugins-config/system-copy-config.vim'
 exec 'source ' . s:svimPath . '/config/plugins-config/startify-config.vim'
 exec 'source ' . s:svimPath . '/config/plugins-config/airline-config.vim'
 exec 'source ' . s:svimPath . '/config/plugins-config/tags-config.vim'

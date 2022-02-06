@@ -24,7 +24,8 @@ set incsearch           " search while typing. `set is` or `set nois`. default i
 set mouse=a             " enable mouse support (resize splits, etc...)
 set colorcolumn=120     " Indent line at what column? Set something like '99999' to not display it
 set scrolloff=5         " Determines the number of context lines you would like to see above and below the cursor
-set clipboard=unnamedplus   " use system clipboard ('+') for copy, paste and delete. all goes to '+' register.
+" set clipboard=unnamedplus " use system clipboard ('+') for copy, paste and delete. all goes to '+' register.
+                            " using vim-system-copy plugin instead of setting clipboard. ex: cpiw (copy), cvi' (paste)
 set cedit=\<C-Y>            " use C-y to go to command mode window (q:) from command mode
 set encoding=UTF-8          " for vim. No need to set explicitly under Neovim: always uses UTF-8 as the default encoding.
 set timeoutlen=500          " By default timeoutlen is 1000 ms. to increase response time of <leader>f

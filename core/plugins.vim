@@ -14,7 +14,7 @@ call plug#begin(s:pluggedDir)
     Plug 'tpope/vim-commentary' " adds gc{motion}, gcc (comment a line)   
     Plug 'vim-scripts/ReplaceWithRegister' " adds ["reg]gr{motion}, ["reg]grr (replace a line from reg rgister)
     Plug 'tommcdo/vim-exchange' " adds cx{ motion }, cxx (for line swap), and cxX (line swap in visual mode)
-    Plug 'christoomey/vim-system-copy' 
+    Plug 'christoomey/vim-system-copy' " cpiw (copy to clipboard inside word), cviw (paste from clipboard inside word)
     Plug 'christoomey/vim-sort-motion' 
     " plugin that adds custom text objects
     Plug 'kana/vim-textobj-user' " no text objects, used by other plugins

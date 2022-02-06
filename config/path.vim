@@ -2,9 +2,12 @@ if has('win32')
     " add git-bash in the path for fzf + bat to work correctly
     let $PATH='C:\Program Files\Git\bin;'.$PATH 
     " add fzf into path on windows. use from pluggin instead of system installed using choco.
-     let $PATH = $USERPROFILE."\\.fzf\\bin;".$PATH
-     " add lua binaries into path for luacheck
-     let $PATH = "C:\\ProgramData\\chocolatey\\lib\\luarocks\\luarocks-2.4.4-win32\\systree\\bin;".$PATH
+    let $PATH = $USERPROFILE."\\.fzf\\bin;".$PATH
+    " add lua binaries into path for luacheck
+    let luarocks_path = "C:\\ProgramData\\chocolatey\\lib\\luarocks\\luarocks-2.4.4-win32\\systree\\bin"
+    if isdirectory(glob(luarocks_path))
+        let $PATH = luarocks_path . ";" . $PATH
+    endif
 endif
 
 
