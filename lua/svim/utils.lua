@@ -56,6 +56,7 @@ local get_package_path = function()
     return package_path
 end
 
+M.is_windows = is_windows
 M.join_paths = join_paths
 M.get_shell = get_shell
 M.print_table = print_table

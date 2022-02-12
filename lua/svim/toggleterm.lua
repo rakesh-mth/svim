@@ -58,8 +58,46 @@ toggleterm.setup{
     }
 }
 
--- git status using lazygit
+-- terminals: powershell and cmd
 local Terminal  = require('toggleterm.terminal').Terminal
+if require 'svim.utils'.is_windows then
+    local powershell = Terminal:new({
+        cmd = "powershell",
+        dir = "git_dir",
+        hidden = true,
+        direction = "float",
+        float_opts = {
+            border = "double",
+        },
+        on_open = function(term)
+            vim.cmd("startinsert!")
+        end,
+    })
+    local cmd = Terminal:new({
+        cmd = "cmd",
+        dir = "git_dir",
+        hidden = true,
+        direction = "float",
+        float_opts = {
+            border = "double",
+        },
+        on_open = function(term)
+            vim.cmd("startinsert!")
+        end,
+    })
+    function _terminal_toggle(name)
+        if name == 'powershell' then
+            powershell:toggle()
+        end
+        if name == 'cmd' then
+            cmd:toggle()
+        end
+    end
+    vim.api.nvim_set_keymap("n", "<leader>tp", "<cmd>lua _terminal_toggle('powershell')<CR>", {noremap = true, silent = true})
+    vim.api.nvim_set_keymap("n", "<leader>tc", "<cmd>lua _terminal_toggle('cmd')<CR>", {noremap = true, silent = true})
+end
+
+-- git status using lazygit
 local lazygit = Terminal:new({
     cmd = "lazygit",
     dir = "git_dir",
@@ -96,6 +134,7 @@ local ctxmake_x86 = Terminal:new({
     float_opts = {
         border = "double",
     },
+    close_on_exit = false,
 })
 local ctxmake_x64 = Terminal:new({
     cmd = "ctxmake -a x64",
@@ -104,6 +143,7 @@ local ctxmake_x64 = Terminal:new({
     float_opts = {
         border = "double",
     },
+    close_on_exit = false,
 })
 function _ctxmake_toggle(bIsX86)
     if bIsX86 then
