@@ -189,7 +189,12 @@
 
 " floaterm mappings
     if exists(':FloatermNew')
-        nnoremap <leader>ab :FloatermNew btm<CR>| " open system monitoring
+        if executable('btm')
+            nnoremap <leader>ab :FloatermNew btm<CR>| " open system monitoring
+        endif
+        if executable('duf')
+            nnoremap <leader>ad :FloatermNew watch -n 2 duf<CR>| " disk space
+        endif
     endif
 
 " lsp mappings
@@ -207,8 +212,8 @@
     nnoremap <silent> <leader>br :call svim#functions#BufDo("e")<cr><esc>
 
 " add line above and below without leaving normal mode
-    nnoremap <silent> <leader>ad :set paste<CR>m`o<Esc>``:set nopaste<CR>
-    nnoremap <silent> <leader>au :set paste<CR>m`O<Esc>``:set nopaste<CR>
+    nnoremap <silent> <leader>ed :set paste<CR>m`o<Esc>``:set nopaste<CR>
+    nnoremap <silent> <leader>eu :set paste<CR>m`O<Esc>``:set nopaste<CR>
 
 " copy and paste from system clipboard using \y and \p. 
 " commented: system clipboard is default for copy, paste and delete.
