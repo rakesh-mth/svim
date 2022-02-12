@@ -58,6 +58,7 @@ toggleterm.setup{
     }
 }
 
+-- git status using lazygit
 local Terminal  = require('toggleterm.terminal').Terminal
 local lazygit = Terminal:new({
     cmd = "lazygit",
@@ -71,10 +72,9 @@ local lazygit = Terminal:new({
 function _lazygit_toggle()
     lazygit:toggle()
 end
--- git status using lazygit
 vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
 
-
+-- system monitoring status using btm
 local btm = Terminal:new({
     cmd = "btm",
     hidden = true,
@@ -86,8 +86,35 @@ local btm = Terminal:new({
 function _btm_toggle()
     btm:toggle()
 end
--- system monitoring status using btm
 vim.api.nvim_set_keymap("n", "<leader>ab", "<cmd>lua _btm_toggle()<CR>", {noremap = true, silent = true})
+
+-- build projects using ctxmake
+local ctxmake_x86 = Terminal:new({
+    cmd = "ctxmake -a x86",
+    hidden = true,
+    direction = "float",
+    float_opts = {
+        border = "double",
+    },
+})
+local ctxmake_x64 = Terminal:new({
+    cmd = "ctxmake -a x64",
+    hidden = true,
+    direction = "float",
+    float_opts = {
+        border = "double",
+    },
+})
+function _ctxmake_toggle(bIsX86)
+    if bIsX86 then
+        ctxmake_x86:toggle()
+    else
+        ctxmake_x64:toggle()
+    end
+end
+-- system monitoring status using btm
+vim.api.nvim_set_keymap("n", "<leader>m", "<cmd>lua _ctxmake_toggle(true)<CR>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<leader>M", "<cmd>lua _ctxmake_toggle(false)<CR>", {noremap = true, silent = true})
 
 -- git push command and keymap
 vim.cmd [[ command! -count=1 TermGitPush  lua require'toggleterm'.exec("git push", <count>, 12) ]]
