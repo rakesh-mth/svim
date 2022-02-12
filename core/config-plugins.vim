@@ -14,4 +14,5 @@ exec 'source ' . s:svimPath . '/config/plugins-config/fzfproject-config.vim'
 exec 'source ' . s:svimPath . '/config/plugins-config/vim-sneak-config.vim'
 exec 'source ' . s:svimPath . '/config/plugins-config/floaterm-config.vim'
 exec 'source ' . s:svimPath . '/config/plugins-config/quickscope-config.vim'
+exec 'source ' . s:svimPath . '/config/plugins-config/vim-fubitive-config.vim'
 
