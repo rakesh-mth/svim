@@ -70,6 +70,7 @@ call plug#begin(s:pluggedDir)
         Plug 'nvim-treesitter/nvim-treesitter-refactor'
         Plug 'nvim-treesitter/nvim-treesitter-textobjects'
         Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " treesitter for better text color
+        Plug 'andymass/vim-matchup' " It extends vim's % key to language-specific words instead of just single characters.
         " completion plugins
         Plug 'hrsh7th/cmp-nvim-lsp' " add nvim_lsp source in nvim-cmp. completion using lsp.
         Plug 'hrsh7th/cmp-nvim-lua' " add nvim_lua source in nvim-cmp.

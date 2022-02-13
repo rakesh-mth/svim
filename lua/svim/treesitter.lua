@@ -151,5 +151,15 @@ if treesitter_refactor_status_ok then
     }
 end
 
+-- treesitter refactor
+local vim_matchup_status_ok, _ = pcall(require, "treesitter-matchup")
+if vim_matchup_status_ok then
+    treesitter_config["matchup"] = {
+        enable = true,              -- mandatory, false will disable the whole extension
+        -- disable = { "c", "ruby" },  -- optional, list of language that will be disabled
+        -- [options]
+    }
+end
+
 treesitter_configs.setup(treesitter_config)
 
