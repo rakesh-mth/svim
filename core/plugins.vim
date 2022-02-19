@@ -94,7 +94,9 @@ call plug#begin(s:pluggedDir)
         Plug 'b0o/schemastore.nvim' " providing access to the SchemaStore catalog for jsonls
         " fuzzy finder - lua based
         Plug 'nvim-telescope/telescope.nvim'
-        Plug 'ahmedkhalf/project.nvim'
+        Plug 'nvim-telescope/telescope-project.nvim' " project support in telescope
+        Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+        Plug 'ahmedkhalf/project.nvim' " projects support in telescope.
         Plug 'ibhagwan/fzf-lua'
         " floating terminal
         Plug 'akinsho/toggleterm.nvim'

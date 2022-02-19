@@ -142,6 +142,8 @@
     nnoremap <leader>l  :BLines<CR>
     nnoremap <leader>L  :Lines<CR>
     nnoremap <leader>c  :Colors<CR>
+    nnoremap <leader>s  :FzfLua<CR>
+    nnoremap <leader>S  :Telescope<CR>
     " Insert mode completion, fails on windows when it looks for /usr/share/dict/words.
     if has('macunix') || ('unix')
         imap <c-x><c-k> <plug>(fzf-complete-word)
