@@ -93,6 +93,8 @@ call plug#begin(s:pluggedDir)
         Plug 'jose-elias-alvarez/null-ls.nvim', {'commit': '288c4582f62f04944412acaed098fc16a1818464'} " null-ls language server for formatter and linter (in addition to lsp)
         Plug 'b0o/schemastore.nvim' " providing access to the SchemaStore catalog for jsonls
         " fuzzy finder - lua based
+        Plug 'nvim-telescope/telescope.nvim'
+        Plug 'ahmedkhalf/project.nvim'
         Plug 'ibhagwan/fzf-lua'
         " floating terminal
         Plug 'akinsho/toggleterm.nvim'
