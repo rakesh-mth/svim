@@ -62,10 +62,8 @@ augroup END
 
 augroup plugin_lsp
     autocmd!
-    " map q to exit lspinfo window
-    autocmd FileType lspinfo nmap <buffer> q <C-w>c
-    " map q to exit null-ls-info window
-    autocmd FileType null-ls-info nmap <buffer> q <C-w>c
+    " map q to exit lspinfo,lsp-installer,null-ls-info window
+    autocmd FileType lspinfo,lsp-installer,null-ls-info nmap <buffer> q <C-w>c
 augroup END
 
 function! VimEnterFunction()
