@@ -110,3 +110,8 @@ if status_project_nvim_ok then
     require("telescope").load_extension('projects')
 end
 
+-- keymap for telescope
+vim.api.nvim_set_keymap("n", "<leader>tp", "<cmd>lua require'telescope'.extensions.project.project{ display_type = 'full' }<CR>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<leader>tf", "<cmd>Telescope find_files<CR>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<leader>tb", "<cmd>Telescope buffers<CR>", {noremap = true, silent = true})
+
