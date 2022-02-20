@@ -93,8 +93,8 @@ if require 'svim.utils'.is_windows then
             cmd:toggle()
         end
     end
-    vim.api.nvim_set_keymap("n", "<leader>tp", "<cmd>lua _terminal_toggle('powershell')<CR>", {noremap = true, silent = true})
-    vim.api.nvim_set_keymap("n", "<leader>tc", "<cmd>lua _terminal_toggle('cmd')<CR>", {noremap = true, silent = true})
+    vim.api.nvim_set_keymap("n", "<leader>ap", "<cmd>lua _terminal_toggle('powershell')<CR>", {noremap = true, silent = true})
+    vim.api.nvim_set_keymap("n", "<leader>ac", "<cmd>lua _terminal_toggle('cmd')<CR>", {noremap = true, silent = true})
 end
 
 -- git status using lazygit
