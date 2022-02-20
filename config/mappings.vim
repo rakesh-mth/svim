@@ -8,8 +8,7 @@
 
 " disable highlights
     nnoremap <leader>nh :noh<cr>
-    " mapping similar to LunarVim
-    nnoremap <leader>h :noh<cr>
+    nnoremap <leader>h  :noh<cr> " mapping similar to LunarVim
 
 " productivity
     nnoremap <leader>] ]]zz
@@ -67,7 +66,6 @@
     nnoremap <leader>fed :e $MYVIMRC<cr>| " open vim configuration file (.vimrc or init.vim)
     nnoremap <leader>gb  :GBranches<cr>| " open  page (from fugitive)
     nnoremap <leader>gt  :GTags<cr>| " open  page (from fugitive)
-    nnoremap <leader>gg  :FloatermNew lazygit<cr>| " floaterm with lazygit
     nnoremap <leader>gs  :Git \| wincmd _ \| normal gu<cr>| " open git status page (from fugitive), and jump to Unstaged
     nnoremap <leader>gp  :Git push<cr> " push to remote branch
     nnoremap <leader>gc  :Commits<cr>| " open commit list in current branch
@@ -191,6 +189,9 @@
 
 " floaterm mappings
     if exists(':FloatermNew')
+        if executable('lazygit')
+            nnoremap <leader>gg :FloatermNew lazygit<cr>| " floaterm with lazygit
+        endif
         if executable('btm')
             nnoremap <leader>ab :FloatermNew btm<CR>| " open system monitoring
         endif
