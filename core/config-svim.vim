@@ -14,6 +14,7 @@ endif
 
 " source lua files
 if has('nvim-0.5') && exists("g:lspconfig")
+    exec 'luafile ' . s:svimPath . '/lua/svim/lsp-colors.lua'
     exec 'luafile ' . s:svimPath . '/lua/svim/nvim-tree.lua'
     exec 'luafile ' . s:svimPath . '/lua/svim/cmp.lua'
     exec 'luafile ' . s:svimPath . '/lua/svim/lsp-config.lua'

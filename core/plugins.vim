@@ -65,6 +65,7 @@ call plug#begin(s:pluggedDir)
         Plug 'nvim-lua/plenary.nvim'  " dependencies for null-ls
         Plug 'kyazdani42/nvim-web-devicons' " for file icons in nvim-tree. needed by nvim-tree.
         Plug 'kyazdani42/nvim-tree.lua' " A File Explorer For Neovim Written In Lua
+        Plug 'folke/lsp-colors.nvim' " for color themes that don't support neovim builtin lsp client
         " treesitter plugins
         Plug 'nvim-treesitter/playground'
         Plug 'nvim-treesitter/nvim-treesitter-refactor'

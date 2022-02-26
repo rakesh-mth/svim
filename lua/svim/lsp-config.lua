@@ -119,6 +119,8 @@ local null_ls_status_ok, null_ls = pcall(require, "null-ls")
 if null_ls_status_ok then
     null_ls.setup({
         sources = {
+            -- vim linter
+            null_ls.builtins.diagnostics.vint,
             -- lua formatter and linter
             null_ls.builtins.formatting.stylua,
             null_ls.builtins.diagnostics.luacheck,
