@@ -31,7 +31,7 @@
     endif
 
 " add path of svim to rtp 
-    let &rtp = &rtp . ',' . s:svimPath
+    let &runtimepath = &runtimepath . ',' . s:svimPath
 
 " auto install all plugin if vim-user-config is missing (bootstrap vim-user-config). 
     if !isdirectory(s:pluggedDir)
