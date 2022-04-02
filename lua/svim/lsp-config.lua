@@ -105,14 +105,18 @@ if lsp_installer_status_ok then
 end
 
 -- config for nlsp-settings.nvim
-local nlspsettings_status_ok, nlspsettings = pcall(require, "nlspsettings")
-if nlspsettings_status_ok then
-    nlspsettings.setup({
-        config_home = vim.fn.stdpath("data") .. "/nlsp-settings",
-        local_settings_root_markers = { ".git" },
-        jsonls_append_default_schemas = true,
-    })
-end
+-- commented below code to setup nlsp-settings because it is breaking now after an update
+-- local nlspsettings_status_ok, nlspsettings = pcall(require, "nlspsettings")
+-- if nlspsettings_status_ok then
+--     nlspsettings.setup({
+--         config_home = vim.fn.stdpath("data") .. "/nlsp-settings",
+--         local_settings_dir = ".nlsp-settings",
+--         local_settings_root_markers = { ".git" },
+--         append_default_schemas = true,
+--         loader = 'json',
+--         -- jsonls_append_default_schemas = true,
+--     })
+-- end
 
 -- config for null-ls.nvim
 local null_ls_status_ok, null_ls = pcall(require, "null-ls")
