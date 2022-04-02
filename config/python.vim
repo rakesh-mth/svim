@@ -16,6 +16,6 @@ if !empty(glob(python38_vp. python_exe))  | let g:python3_host_prog = python38_v
 if !empty(glob(python39_vp . python_exe)) | let g:python3_host_prog = python39_vp . python_exe | endif
 
 " modify path to use python from virtual env
-
-if !empty(glob(python38_vp . 'nvr')) | let $PATH = python38_vp . ':' . $PATH | endif
-if !empty(glob(python39_vp . 'nvr')) | let $PATH = python39_vp . ':' . $PATH | endif
+if has('win32') | let path_separator = ";" | else | let path_separator = ':' | endif
+if !empty(glob(python38_vp . python_exe)) | let $PATH = python38_vp . path_separator . $PATH | endif
+if !empty(glob(python39_vp . python_exe)) | let $PATH = python39_vp . path_separator . $PATH | endif
