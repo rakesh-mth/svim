@@ -107,7 +107,7 @@ cmp.setup {
                 buffer = "[Buffer]",
                 path = "[Path]",
             })[entry.source.name]
-            local max_len = 30
+            local max_len = 50
             if string.len(vim_item.abbr) > max_len then
                 vim_item.abbr = string.sub(vim_item.abbr, 1, max_len - 2) .. "··"
             end
