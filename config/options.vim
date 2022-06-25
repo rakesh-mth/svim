@@ -41,6 +41,7 @@ else
 endif
 set cursorline          " color the cursor line, highlight current line.
 set history=10000       " history of ex command. nvim default: 10000, vim default: 1000. keep is consistent to 10000.
+set laststatus=3        " global status line
 
 
 filetype plugin on
