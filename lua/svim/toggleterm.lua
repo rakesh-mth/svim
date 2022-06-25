@@ -27,7 +27,7 @@ toggleterm.setup {
         return vim.o.columns * 0.4
       end
     end,
-    open_mapping = [[<c-t>]], -- <c-t> is used for tag stacks, but we do not use tags.
+    open_mapping = [[<c-\>]], -- <c-t> is used for tag stacks, do not use that.
     -- on_open = fun(t: Terminal), -- function to run when the terminal opens
     -- on_close = fun(t: Terminal), -- function to run when the terminal closes
     hide_numbers = true, -- hide the number column in toggleterm buffers
