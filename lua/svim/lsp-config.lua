@@ -49,13 +49,14 @@ local on_attach = function(client, bufnr)
 end
 
 local get_lsp_capabilities = function()
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities.textDocument.completion.completionItem.snippetSupport = true
     local cmp_nvim_lsp_status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
     if cmp_nvim_lsp_status_ok then
-        capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+        return cmp_nvim_lsp.default_capabilities()
+    else
+        local capabilities = vim.lsp.protocol.make_client_capabilities()
+        capabilities.textDocument.completion.completionItem.snippetSupport = true
+        return capabilities
     end
-    return capabilities
 end
 
 -- using lspconfig
@@ -135,4 +136,11 @@ if null_ls_status_ok then
             null_ls.builtins.completion.spell,
         },
     })
+end
+
+
+-- config for neodev.nvim
+local neodev_status_ok, neodev = pcall(require, "neodev")
+if neodev_status_ok then
+    neodev.setup({})
 end

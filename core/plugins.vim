@@ -75,7 +75,7 @@ call plug#begin(s:pluggedDir)
         " completion plugins
         Plug 'hrsh7th/cmp-nvim-lsp' " add nvim_lsp source in nvim-cmp. completion using lsp.
         Plug 'hrsh7th/cmp-nvim-lua' " add nvim_lua source in nvim-cmp.
-        Plug 'folke/lua-dev.nvim'   " complete using lsp. for developing lua plugin.
+        Plug 'folke/neodev.nvim'   " Neovim setup for init.lua and plugin development.
         Plug 'hrsh7th/cmp-buffer'
         Plug 'hrsh7th/cmp-path'
         Plug 'hrsh7th/cmp-cmdline'
