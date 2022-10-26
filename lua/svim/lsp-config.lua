@@ -121,7 +121,7 @@ end
 
 -- config for null-ls.nvim
 local null_ls_status_ok, null_ls = pcall(require, "null-ls")
-if null_ls_status_ok then
+if null_ls_status_ok and not vim.fn.has('nvim-0.8') then -- disable until nvim 0.8 is supported in null-ls
     null_ls.setup({
         sources = {
             -- vim linter
